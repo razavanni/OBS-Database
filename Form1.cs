@@ -5,19 +5,22 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace OBS_Database
 {
     public partial class Form1 : Form
     {
+
         public Form1()
         {
             InitializeComponent();
         }
-
+        #region Form load
         private void Form1_Load(object sender, EventArgs e)
         {
             // TODO: Diese Codezeile lädt Daten in die Tabelle "obsDataSet.selectAllBezirk". Sie können sie bei Bedarf verschieben oder entfernen.
@@ -25,8 +28,21 @@ namespace OBS_Database
             // TODO: Diese Codezeile lädt Daten in die Tabelle "obsDataSet.selectAllOrt". Sie können sie bei Bedarf verschieben oder entfernen.
             this.selectAllOrtTableAdapter.Fill(this.obsDataSet.selectAllOrt);
 
-        }
+            btn_delete_ort.Visible = true;
+            btnDeleteBezirk.Visible = false;
+            btnDeleteStrasse.Visible = false;
 
+            cb_bezirk_fk.DataSource = obsDataSet.selectAllOrt;
+            cb_bezirk_fk.DisplayMember = "OName";
+
+            cb_strasse_fk.DataSource = obsDataSet.selectAllBezirk;
+            cb_strasse_fk.DisplayMember = "BName";
+
+            lstPK.Visible = false;
+        }
+        #endregion
+
+        #region Insert Ort
         private void btnInsert_Click(object sender, EventArgs e)
         {
             String strCon = "Data Source=(LocalDB)\\inf31;Initial Catalog = obs; Integrated Security = True";
@@ -58,7 +74,126 @@ namespace OBS_Database
             this.selectAllOrtTableAdapter.Fill(this.obsDataSet.selectAllOrt);
 
         }
+        #endregion
 
+        #region Insert Bezirk
+        private void btnInsertBezirk_Click(object sender, EventArgs e)
+        {
+            String strCon = "Data Source=(LocalDB)\\inf31;Initial Catalog = obs; Integrated Security = True";
+
+            SqlConnection con = new SqlConnection(strCon);
+
+            SqlCommand cmd = new SqlCommand("insertBezirk", con);
+
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            
+            string oname = cb_bezirk_fk.Text;
+            int oid = get_OID_from_OName(oname);
+
+
+            cmd.Parameters.Add("@inBOID", SqlDbType.Int).Value = oid;
+            try
+            {
+                cmd.Parameters.Add("@inBID", SqlDbType.Int).Value = Int32.Parse(txtBID.Text);
+            }
+            catch
+            {
+                MessageBox.Show("Die Bezirks ID darf keine Buchstaben enthalten!", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtBID.Text = null;
+                txtBID.Focus();
+            }
+            cmd.Parameters.Add("@inBPLZ", SqlDbType.VarChar).Value = txtBPLZ.Text;
+            cmd.Parameters.Add("@inBName", SqlDbType.VarChar).Value = txtBName.Text;
+            try
+            {
+                cmd.Parameters.Add("@inBEZAHL", SqlDbType.Int).Value = Int32.Parse(txtBEZahl.Text);
+            }
+            catch
+            {
+                MessageBox.Show("Die Einwohneranzahl darf keine Buchstaben enthalten!", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtBEZahl.Text = null;
+                txtBEZahl.Focus();
+            }
+            
+            
+            con.Open();
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
+            con.Close();
+            
+            // TODO: Diese Codezeile lädt Daten in die Tabelle "obsDataSet.selectAllOrt". Sie können sie bei Bedarf verschieben oder entfernen.
+            this.selectAllBezirkTableAdapter.Fill(this.obsDataSet.selectAllBezirk);
+
+        }
+        #endregion
+
+        #region Insert Strasse
+        private void btnInsertStrasse_Click(object sender, EventArgs e)
+        {
+            String strCon = "Data Source=(LocalDB)\\inf31;Initial Catalog = obs; Integrated Security = True";
+
+            SqlConnection con = new SqlConnection(strCon);
+
+            SqlCommand cmd = new SqlCommand("insertStrasse", con);
+
+            cmd.CommandType = CommandType.StoredProcedure;
+
+
+            string bname = cb_strasse_fk.Text;
+            int bid = get_BID_from_BName(bname);
+
+
+            cmd.Parameters.Add("@inSBID", SqlDbType.Int).Value = bid;
+            try
+            {
+                cmd.Parameters.Add("@inSID", SqlDbType.Int).Value = Int32.Parse(txtSID.Text);
+            }
+            catch
+            {
+                MessageBox.Show("Die Strassen ID darf keine Buchstaben enthalten!", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtSID.Text = null;
+                txtSID.Focus();
+            }
+            cmd.Parameters.Add("@inSPLZ", SqlDbType.VarChar).Value = txtSPLZ.Text;
+            cmd.Parameters.Add("@inSName", SqlDbType.VarChar).Value = txtSName.Text;
+            try
+            {
+                cmd.Parameters.Add("@inSEZAHL", SqlDbType.Int).Value = Int32.Parse(txtSEZahl.Text);
+            }
+            catch
+            {
+                MessageBox.Show("Die Einwohneranzahl darf keine Buchstaben enthalten!", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtSEZahl.Text = null;
+                txtSEZahl.Focus();
+            }
+
+
+            con.Open();
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            con.Close();
+
+            // TODO: Diese Codezeile lädt Daten in die Tabelle "obsDataSet.selectAllOrt". Sie können sie bei Bedarf verschieben oder entfernen.
+            this.selectAllStrasseTableAdapter1.Fill(this.obsDataSet.selectAllStrasse);
+        }
+        #endregion
+
+        #region Delete Ort
         private void btn_delete_ort_Click(object sender, EventArgs e)
         {
             String strCon = "Data Source=(LocalDB)\\inf31;Initial Catalog = obs; Integrated Security = True";
@@ -88,26 +223,98 @@ namespace OBS_Database
             // TODO: Diese Codezeile lädt Daten in die Tabelle "obsDataSet.selectAllOrt". Sie können sie bei Bedarf verschieben oder entfernen.
             this.selectAllOrtTableAdapter.Fill(this.obsDataSet.selectAllOrt);
         }
+        #endregion
 
-        private void btnInsertBezirk_Click(object sender, EventArgs e)
+        #region Radio Buttons
+        private void radioStateChanged(object sender, EventArgs e)
         {
+            if (rb_ort.Checked)
+            {
+                Console.WriteLine("ort checked");
+                lstPK.Visible = false;
+                btn_delete_ort.Visible = true;
+                btnDeleteBezirk.Visible = false;
+                btnDeleteStrasse.Visible = false;
+
+                lstID.DataSource = obsDataSet.selectAllOrt;
+                lstID.DisplayMember = "OID";
+
+                lstName.DataSource = obsDataSet.selectAllOrt;
+                lstName.DisplayMember = "OName";
+
+                lstPLZ.DataSource = obsDataSet.selectAllOrt;
+                lstPLZ.DisplayMember = "OPLZ";
+
+                lstEZahl.DataSource = obsDataSet.selectAllOrt;
+                lstEZahl.DisplayMember = "OEZahl";
+            }
+            else if (rb_bezirk.Checked)
+            {
+                Console.WriteLine("bezirk checked");
+
+                lstPK.Visible = true;
+                btn_delete_ort.Visible = false;
+                btnDeleteBezirk.Visible = true;
+                btnDeleteStrasse.Visible = false;
+
+                lstPK.DataSource = obsDataSet.selectAllBezirk;
+                lstPK.DisplayMember = "BOID";
+
+                lstID.DataSource = obsDataSet.selectAllBezirk;
+                lstID.DisplayMember = "BID";
+
+                lstName.DataSource = obsDataSet.selectAllBezirk;
+                lstName.DisplayMember = "BName";
+
+                lstPLZ.DataSource = obsDataSet.selectAllBezirk;
+                lstPLZ.DisplayMember = "BPLZ";
+
+                lstEZahl.DataSource = obsDataSet.selectAllBezirk;
+                lstEZahl.DisplayMember = "BEZahl";
+            }
+            else if (rb_strasse.Checked)
+            {
+                Console.WriteLine("strasse checked");
+
+                lstPK.Visible = true;
+                btn_delete_ort.Visible = false;
+                btnDeleteBezirk.Visible = false;
+                btnDeleteStrasse.Visible = true;
+
+                lstPK.DataSource = obsDataSet.selectAllStrasse;
+                lstPK.DisplayMember = "SBID";
+
+                lstID.DataSource = obsDataSet.selectAllStrasse;
+                lstID.DisplayMember = "SID";
+
+                lstName.DataSource = obsDataSet.selectAllStrasse;
+                lstName.DisplayMember = "SName";
+
+                lstPLZ.DataSource = obsDataSet.selectAllStrasse;
+                lstPLZ.DisplayMember = "SPLZ";
+
+                lstEZahl.DataSource = obsDataSet.selectAllStrasse;
+                lstEZahl.DisplayMember = "SEZahl";
+            }
+        }
+        #endregion
+
+        #region GET OID
+        private int get_OID_from_OName(string oname)
+        {
+            int oid = 0;
+
             String strCon = "Data Source=(LocalDB)\\inf31;Initial Catalog = obs; Integrated Security = True";
+            String sqlCommand = $"SELECT OID FROM ort WHERE OName='{oname}'";
 
             SqlConnection con = new SqlConnection(strCon);
-            SqlCommand cmd = new SqlCommand("insertBezirk", con);
 
-            cmd.CommandType = CommandType.StoredProcedure;
-
-            cmd.Parameters.Add("@inBID", SqlDbType.Int).Value = Int32.Parse(txtBID.Text);
-            cmd.Parameters.Add("@inBName", SqlDbType.VarChar).Value = txtBName.Text;
-            cmd.Parameters.Add("@inBPLZ", SqlDbType.VarChar).Value = txtBPLZ.Text;
-            cmd.Parameters.Add("@inBEZAHL", SqlDbType.Int).Value = Int32.Parse(txtBEZahl.Text);
-
+            SqlCommand cmd = new SqlCommand(sqlCommand, con);
 
             con.Open();
             try
             {
-                cmd.ExecuteNonQuery();
+                oid = Convert.ToInt32(cmd.ExecuteScalar());
             }
             catch (Exception ex)
             {
@@ -116,9 +323,36 @@ namespace OBS_Database
 
             con.Close();
 
-            // TODO: Diese Codezeile lädt Daten in die Tabelle "obsDataSet.selectAllOrt". Sie können sie bei Bedarf verschieben oder entfernen.
-            this.selectAllOrtTableAdapter.Fill(this.obsDataSet.selectAllOrt);
-
+            return oid;
         }
+        #endregion
+
+        #region GET BID
+        private int get_BID_from_BName(string bname)
+        {
+            int bid = 0;
+
+            String strCon = "Data Source=(LocalDB)\\inf31;Initial Catalog = obs; Integrated Security = True";
+            String sqlCommand = $"SELECT BID FROM bezirk WHERE BName='{bname}'";
+
+            SqlConnection con = new SqlConnection(strCon);
+
+            SqlCommand cmd = new SqlCommand(sqlCommand, con);
+
+            con.Open();
+            try
+            {
+                bid = Convert.ToInt32(cmd.ExecuteScalar());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            con.Close();
+
+            return bid;
+        }
+        #endregion
     }
 }
