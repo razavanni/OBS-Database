@@ -37,7 +37,7 @@
             this.txtOName = new System.Windows.Forms.TextBox();
             this.txtOPLZ = new System.Windows.Forms.TextBox();
             this.txtOEZahl = new System.Windows.Forms.TextBox();
-            this.btnInsert = new System.Windows.Forms.Button();
+            this.btnInsertOrt = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -48,25 +48,30 @@
             this.lstEZahl = new System.Windows.Forms.ListBox();
             this.btn_delete_ort = new System.Windows.Forms.Button();
             this.gp_bezirk = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.txtBID = new System.Windows.Forms.TextBox();
+            this.btnInsertBezirk = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtBName = new System.Windows.Forms.TextBox();
+            this.txtBPLZ = new System.Windows.Forms.TextBox();
+            this.txtBEZahl = new System.Windows.Forms.TextBox();
             this.gp_strasse = new System.Windows.Forms.GroupBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.txtSID = new System.Windows.Forms.TextBox();
+            this.btnInsertStrasse = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.txtSName = new System.Windows.Forms.TextBox();
+            this.txtSPLZ = new System.Windows.Forms.TextBox();
+            this.txtSEZahl = new System.Windows.Forms.TextBox();
+            this.btnDeleteStrasse = new System.Windows.Forms.Button();
+            this.btnDeleteBezirk = new System.Windows.Forms.Button();
+            this.rb_ort = new System.Windows.Forms.RadioButton();
+            this.rd_bezirk = new System.Windows.Forms.RadioButton();
+            this.rd_strasse = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.selectAllOrtBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.obsDataSet)).BeginInit();
             this.gp_ort.SuspendLayout();
@@ -127,15 +132,15 @@
             this.txtOEZahl.Size = new System.Drawing.Size(136, 20);
             this.txtOEZahl.TabIndex = 4;
             // 
-            // btnInsert
+            // btnInsertOrt
             // 
-            this.btnInsert.Location = new System.Drawing.Point(570, 32);
-            this.btnInsert.Name = "btnInsert";
-            this.btnInsert.Size = new System.Drawing.Size(103, 20);
-            this.btnInsert.TabIndex = 5;
-            this.btnInsert.Text = "Insert Ort";
-            this.btnInsert.UseVisualStyleBackColor = true;
-            this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click);
+            this.btnInsertOrt.Location = new System.Drawing.Point(570, 32);
+            this.btnInsertOrt.Name = "btnInsertOrt";
+            this.btnInsertOrt.Size = new System.Drawing.Size(103, 20);
+            this.btnInsertOrt.TabIndex = 5;
+            this.btnInsertOrt.Text = "Insert Ort";
+            this.btnInsertOrt.UseVisualStyleBackColor = true;
+            this.btnInsertOrt.Click += new System.EventHandler(this.btnInsert_Click);
             // 
             // label1
             // 
@@ -176,7 +181,7 @@
             // gp_ort
             // 
             this.gp_ort.Controls.Add(this.txtOID);
-            this.gp_ort.Controls.Add(this.btnInsert);
+            this.gp_ort.Controls.Add(this.btnInsertOrt);
             this.gp_ort.Controls.Add(this.label1);
             this.gp_ort.Controls.Add(this.label2);
             this.gp_ort.Controls.Add(this.label3);
@@ -226,7 +231,7 @@
             // 
             // btn_delete_ort
             // 
-            this.btn_delete_ort.Location = new System.Drawing.Point(593, 315);
+            this.btn_delete_ort.Location = new System.Drawing.Point(593, 275);
             this.btn_delete_ort.Name = "btn_delete_ort";
             this.btn_delete_ort.Size = new System.Drawing.Size(103, 24);
             this.btn_delete_ort.TabIndex = 14;
@@ -236,15 +241,15 @@
             // 
             // gp_bezirk
             // 
-            this.gp_bezirk.Controls.Add(this.textBox1);
-            this.gp_bezirk.Controls.Add(this.button1);
+            this.gp_bezirk.Controls.Add(this.txtBID);
+            this.gp_bezirk.Controls.Add(this.btnInsertBezirk);
             this.gp_bezirk.Controls.Add(this.label5);
             this.gp_bezirk.Controls.Add(this.label6);
             this.gp_bezirk.Controls.Add(this.label7);
             this.gp_bezirk.Controls.Add(this.label8);
-            this.gp_bezirk.Controls.Add(this.textBox2);
-            this.gp_bezirk.Controls.Add(this.textBox3);
-            this.gp_bezirk.Controls.Add(this.textBox4);
+            this.gp_bezirk.Controls.Add(this.txtBName);
+            this.gp_bezirk.Controls.Add(this.txtBPLZ);
+            this.gp_bezirk.Controls.Add(this.txtBEZahl);
             this.gp_bezirk.Location = new System.Drawing.Point(23, 97);
             this.gp_bezirk.Name = "gp_bezirk";
             this.gp_bezirk.Size = new System.Drawing.Size(684, 59);
@@ -252,21 +257,21 @@
             this.gp_bezirk.TabStop = false;
             this.gp_bezirk.Text = "Bezirk";
             // 
-            // textBox1
+            // txtBID
             // 
-            this.textBox1.Location = new System.Drawing.Point(9, 32);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(80, 20);
-            this.textBox1.TabIndex = 1;
+            this.txtBID.Location = new System.Drawing.Point(9, 32);
+            this.txtBID.Name = "txtBID";
+            this.txtBID.Size = new System.Drawing.Size(80, 20);
+            this.txtBID.TabIndex = 1;
             // 
-            // button1
+            // btnInsertBezirk
             // 
-            this.button1.Location = new System.Drawing.Point(570, 32);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(103, 20);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Insert Bezirk";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnInsertBezirk.Location = new System.Drawing.Point(570, 32);
+            this.btnInsertBezirk.Name = "btnInsertBezirk";
+            this.btnInsertBezirk.Size = new System.Drawing.Size(103, 20);
+            this.btnInsertBezirk.TabIndex = 5;
+            this.btnInsertBezirk.Text = "Insert Bezirk";
+            this.btnInsertBezirk.UseVisualStyleBackColor = true;
             // 
             // label5
             // 
@@ -304,38 +309,38 @@
             this.label8.TabIndex = 9;
             this.label8.Text = "Bezirk Einwohnerzahl";
             // 
-            // textBox2
+            // txtBName
             // 
-            this.textBox2.Location = new System.Drawing.Point(104, 32);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(136, 20);
-            this.textBox2.TabIndex = 2;
+            this.txtBName.Location = new System.Drawing.Point(104, 32);
+            this.txtBName.Name = "txtBName";
+            this.txtBName.Size = new System.Drawing.Size(136, 20);
+            this.txtBName.TabIndex = 2;
             // 
-            // textBox3
+            // txtBPLZ
             // 
-            this.textBox3.Location = new System.Drawing.Point(254, 32);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(136, 20);
-            this.textBox3.TabIndex = 3;
+            this.txtBPLZ.Location = new System.Drawing.Point(254, 32);
+            this.txtBPLZ.Name = "txtBPLZ";
+            this.txtBPLZ.Size = new System.Drawing.Size(136, 20);
+            this.txtBPLZ.TabIndex = 3;
             // 
-            // textBox4
+            // txtBEZahl
             // 
-            this.textBox4.Location = new System.Drawing.Point(415, 32);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(136, 20);
-            this.textBox4.TabIndex = 4;
+            this.txtBEZahl.Location = new System.Drawing.Point(415, 32);
+            this.txtBEZahl.Name = "txtBEZahl";
+            this.txtBEZahl.Size = new System.Drawing.Size(136, 20);
+            this.txtBEZahl.TabIndex = 4;
             // 
             // gp_strasse
             // 
-            this.gp_strasse.Controls.Add(this.textBox5);
-            this.gp_strasse.Controls.Add(this.button2);
+            this.gp_strasse.Controls.Add(this.txtSID);
+            this.gp_strasse.Controls.Add(this.btnInsertStrasse);
             this.gp_strasse.Controls.Add(this.label9);
             this.gp_strasse.Controls.Add(this.label10);
             this.gp_strasse.Controls.Add(this.label11);
             this.gp_strasse.Controls.Add(this.label12);
-            this.gp_strasse.Controls.Add(this.textBox6);
-            this.gp_strasse.Controls.Add(this.textBox7);
-            this.gp_strasse.Controls.Add(this.textBox8);
+            this.gp_strasse.Controls.Add(this.txtSName);
+            this.gp_strasse.Controls.Add(this.txtSPLZ);
+            this.gp_strasse.Controls.Add(this.txtSEZahl);
             this.gp_strasse.Location = new System.Drawing.Point(23, 162);
             this.gp_strasse.Name = "gp_strasse";
             this.gp_strasse.Size = new System.Drawing.Size(684, 59);
@@ -343,21 +348,21 @@
             this.gp_strasse.TabStop = false;
             this.gp_strasse.Text = "Strasse";
             // 
-            // textBox5
+            // txtSID
             // 
-            this.textBox5.Location = new System.Drawing.Point(9, 32);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(80, 20);
-            this.textBox5.TabIndex = 1;
+            this.txtSID.Location = new System.Drawing.Point(9, 32);
+            this.txtSID.Name = "txtSID";
+            this.txtSID.Size = new System.Drawing.Size(80, 20);
+            this.txtSID.TabIndex = 1;
             // 
-            // button2
+            // btnInsertStrasse
             // 
-            this.button2.Location = new System.Drawing.Point(570, 31);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(103, 20);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "Insert Straße";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnInsertStrasse.Location = new System.Drawing.Point(570, 31);
+            this.btnInsertStrasse.Name = "btnInsertStrasse";
+            this.btnInsertStrasse.Size = new System.Drawing.Size(103, 20);
+            this.btnInsertStrasse.TabIndex = 5;
+            this.btnInsertStrasse.Text = "Insert Straße";
+            this.btnInsertStrasse.UseVisualStyleBackColor = true;
             // 
             // label9
             // 
@@ -395,32 +400,87 @@
             this.label12.TabIndex = 9;
             this.label12.Text = "Strasse Einwohnerzahl";
             // 
-            // textBox6
+            // txtSName
             // 
-            this.textBox6.Location = new System.Drawing.Point(104, 32);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(136, 20);
-            this.textBox6.TabIndex = 2;
+            this.txtSName.Location = new System.Drawing.Point(104, 32);
+            this.txtSName.Name = "txtSName";
+            this.txtSName.Size = new System.Drawing.Size(136, 20);
+            this.txtSName.TabIndex = 2;
             // 
-            // textBox7
+            // txtSPLZ
             // 
-            this.textBox7.Location = new System.Drawing.Point(254, 32);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(136, 20);
-            this.textBox7.TabIndex = 3;
+            this.txtSPLZ.Location = new System.Drawing.Point(254, 32);
+            this.txtSPLZ.Name = "txtSPLZ";
+            this.txtSPLZ.Size = new System.Drawing.Size(136, 20);
+            this.txtSPLZ.TabIndex = 3;
             // 
-            // textBox8
+            // txtSEZahl
             // 
-            this.textBox8.Location = new System.Drawing.Point(415, 32);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(136, 20);
-            this.textBox8.TabIndex = 4;
+            this.txtSEZahl.Location = new System.Drawing.Point(415, 32);
+            this.txtSEZahl.Name = "txtSEZahl";
+            this.txtSEZahl.Size = new System.Drawing.Size(136, 20);
+            this.txtSEZahl.TabIndex = 4;
+            // 
+            // btnDeleteStrasse
+            // 
+            this.btnDeleteStrasse.Location = new System.Drawing.Point(593, 335);
+            this.btnDeleteStrasse.Name = "btnDeleteStrasse";
+            this.btnDeleteStrasse.Size = new System.Drawing.Size(103, 24);
+            this.btnDeleteStrasse.TabIndex = 17;
+            this.btnDeleteStrasse.Text = "Delete Strasse";
+            this.btnDeleteStrasse.UseVisualStyleBackColor = true;
+            // 
+            // btnDeleteBezirk
+            // 
+            this.btnDeleteBezirk.Location = new System.Drawing.Point(593, 305);
+            this.btnDeleteBezirk.Name = "btnDeleteBezirk";
+            this.btnDeleteBezirk.Size = new System.Drawing.Size(103, 24);
+            this.btnDeleteBezirk.TabIndex = 18;
+            this.btnDeleteBezirk.Text = "Delete Bezirk";
+            this.btnDeleteBezirk.UseVisualStyleBackColor = true;
+            // 
+            // rb_ort
+            // 
+            this.rb_ort.AutoSize = true;
+            this.rb_ort.Checked = true;
+            this.rb_ort.Location = new System.Drawing.Point(602, 388);
+            this.rb_ort.Name = "rb_ort";
+            this.rb_ort.Size = new System.Drawing.Size(80, 17);
+            this.rb_ort.TabIndex = 19;
+            this.rb_ort.TabStop = true;
+            this.rb_ort.Text = "Anzeige Ort";
+            this.rb_ort.UseVisualStyleBackColor = true;
+            // 
+            // rd_bezirk
+            // 
+            this.rd_bezirk.AutoSize = true;
+            this.rd_bezirk.Location = new System.Drawing.Point(602, 411);
+            this.rd_bezirk.Name = "rd_bezirk";
+            this.rd_bezirk.Size = new System.Drawing.Size(95, 17);
+            this.rd_bezirk.TabIndex = 20;
+            this.rd_bezirk.Text = "Anzeige Bezirk";
+            this.rd_bezirk.UseVisualStyleBackColor = true;
+            // 
+            // rd_strasse
+            // 
+            this.rd_strasse.AutoSize = true;
+            this.rd_strasse.Location = new System.Drawing.Point(602, 434);
+            this.rd_strasse.Name = "rd_strasse";
+            this.rd_strasse.Size = new System.Drawing.Size(101, 17);
+            this.rd_strasse.TabIndex = 21;
+            this.rd_strasse.Text = "Anzeige Strasse";
+            this.rd_strasse.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(931, 547);
+            this.ClientSize = new System.Drawing.Size(733, 547);
+            this.Controls.Add(this.rd_strasse);
+            this.Controls.Add(this.rd_bezirk);
+            this.Controls.Add(this.rb_ort);
+            this.Controls.Add(this.btnDeleteBezirk);
+            this.Controls.Add(this.btnDeleteStrasse);
             this.Controls.Add(this.gp_strasse);
             this.Controls.Add(this.gp_bezirk);
             this.Controls.Add(this.btn_delete_ort);
@@ -441,6 +501,7 @@
             this.gp_strasse.ResumeLayout(false);
             this.gp_strasse.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -454,7 +515,7 @@
         private System.Windows.Forms.TextBox txtOName;
         private System.Windows.Forms.TextBox txtOPLZ;
         private System.Windows.Forms.TextBox txtOEZahl;
-        private System.Windows.Forms.Button btnInsert;
+        private System.Windows.Forms.Button btnInsertOrt;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -465,25 +526,30 @@
         private System.Windows.Forms.ListBox lstEZahl;
         private System.Windows.Forms.Button btn_delete_ort;
         private System.Windows.Forms.GroupBox gp_bezirk;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox txtBID;
+        private System.Windows.Forms.Button btnInsertBezirk;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtBName;
+        private System.Windows.Forms.TextBox txtBPLZ;
+        private System.Windows.Forms.TextBox txtBEZahl;
         private System.Windows.Forms.GroupBox gp_strasse;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox txtSID;
+        private System.Windows.Forms.Button btnInsertStrasse;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox txtSName;
+        private System.Windows.Forms.TextBox txtSPLZ;
+        private System.Windows.Forms.TextBox txtSEZahl;
+        private System.Windows.Forms.Button btnDeleteStrasse;
+        private System.Windows.Forms.Button btnDeleteBezirk;
+        private System.Windows.Forms.RadioButton rb_ort;
+        private System.Windows.Forms.RadioButton rd_bezirk;
+        private System.Windows.Forms.RadioButton rd_strasse;
     }
 }
 
