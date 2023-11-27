@@ -20,6 +20,8 @@ namespace OBS_Database
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            // TODO: Diese Codezeile lädt Daten in die Tabelle "obsDataSet.selectAllBezirk". Sie können sie bei Bedarf verschieben oder entfernen.
+            this.selectAllBezirkTableAdapter.Fill(this.obsDataSet.selectAllBezirk);
             // TODO: Diese Codezeile lädt Daten in die Tabelle "obsDataSet.selectAllOrt". Sie können sie bei Bedarf verschieben oder entfernen.
             this.selectAllOrtTableAdapter.Fill(this.obsDataSet.selectAllOrt);
 

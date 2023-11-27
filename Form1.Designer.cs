@@ -48,6 +48,7 @@
             this.lstEZahl = new System.Windows.Forms.ListBox();
             this.btn_delete_ort = new System.Windows.Forms.Button();
             this.gp_bezirk = new System.Windows.Forms.GroupBox();
+            this.cb_boid = new System.Windows.Forms.ComboBox();
             this.txtBID = new System.Windows.Forms.TextBox();
             this.btnInsertBezirk = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
@@ -58,6 +59,7 @@
             this.txtBPLZ = new System.Windows.Forms.TextBox();
             this.txtBEZahl = new System.Windows.Forms.TextBox();
             this.gp_strasse = new System.Windows.Forms.GroupBox();
+            this.cbsbid = new System.Windows.Forms.ComboBox();
             this.txtSID = new System.Windows.Forms.TextBox();
             this.btnInsertStrasse = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
@@ -73,13 +75,14 @@
             this.rd_bezirk = new System.Windows.Forms.RadioButton();
             this.rd_strasse = new System.Windows.Forms.RadioButton();
             this.lstPK = new System.Windows.Forms.ListBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.selectAllBezirkBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.selectAllBezirkTableAdapter = new OBS_Database.obsDataSetTableAdapters.selectAllBezirkTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.selectAllOrtBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.obsDataSet)).BeginInit();
             this.gp_ort.SuspendLayout();
             this.gp_bezirk.SuspendLayout();
             this.gp_strasse.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.selectAllBezirkBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // lstID
@@ -244,7 +247,7 @@
             // 
             // gp_bezirk
             // 
-            this.gp_bezirk.Controls.Add(this.comboBox1);
+            this.gp_bezirk.Controls.Add(this.cb_boid);
             this.gp_bezirk.Controls.Add(this.txtBID);
             this.gp_bezirk.Controls.Add(this.btnInsertBezirk);
             this.gp_bezirk.Controls.Add(this.label5);
@@ -260,6 +263,14 @@
             this.gp_bezirk.TabIndex = 15;
             this.gp_bezirk.TabStop = false;
             this.gp_bezirk.Text = "Bezirk";
+            // 
+            // cb_boid
+            // 
+            this.cb_boid.FormattingEnabled = true;
+            this.cb_boid.Location = new System.Drawing.Point(93, 32);
+            this.cb_boid.Name = "cb_boid";
+            this.cb_boid.Size = new System.Drawing.Size(112, 21);
+            this.cb_boid.TabIndex = 10;
             // 
             // txtBID
             // 
@@ -337,7 +348,7 @@
             // 
             // gp_strasse
             // 
-            this.gp_strasse.Controls.Add(this.comboBox2);
+            this.gp_strasse.Controls.Add(this.cbsbid);
             this.gp_strasse.Controls.Add(this.txtSID);
             this.gp_strasse.Controls.Add(this.btnInsertStrasse);
             this.gp_strasse.Controls.Add(this.label9);
@@ -353,6 +364,14 @@
             this.gp_strasse.TabIndex = 16;
             this.gp_strasse.TabStop = false;
             this.gp_strasse.Text = "Strasse";
+            // 
+            // cbsbid
+            // 
+            this.cbsbid.FormattingEnabled = true;
+            this.cbsbid.Location = new System.Drawing.Point(93, 33);
+            this.cbsbid.Name = "cbsbid";
+            this.cbsbid.Size = new System.Drawing.Size(112, 21);
+            this.cbsbid.TabIndex = 11;
             // 
             // txtSID
             // 
@@ -479,27 +498,23 @@
             // 
             // lstPK
             // 
+            this.lstPK.DataSource = this.selectAllBezirkBindingSource;
+            this.lstPK.DisplayMember = "BOID";
             this.lstPK.FormattingEnabled = true;
             this.lstPK.Location = new System.Drawing.Point(116, 234);
             this.lstPK.Name = "lstPK";
             this.lstPK.Size = new System.Drawing.Size(112, 277);
             this.lstPK.TabIndex = 22;
+            this.lstPK.ValueMember = "BOID";
             // 
-            // comboBox1
+            // selectAllBezirkBindingSource
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(93, 32);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(112, 21);
-            this.comboBox1.TabIndex = 10;
+            this.selectAllBezirkBindingSource.DataMember = "selectAllBezirk";
+            this.selectAllBezirkBindingSource.DataSource = this.obsDataSet;
             // 
-            // comboBox2
+            // selectAllBezirkTableAdapter
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(93, 33);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(112, 21);
-            this.comboBox2.TabIndex = 11;
+            this.selectAllBezirkTableAdapter.ClearBeforeFill = true;
             // 
             // Form1
             // 
@@ -531,6 +546,7 @@
             this.gp_bezirk.PerformLayout();
             this.gp_strasse.ResumeLayout(false);
             this.gp_strasse.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.selectAllBezirkBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -581,9 +597,11 @@
         private System.Windows.Forms.RadioButton rb_ort;
         private System.Windows.Forms.RadioButton rd_bezirk;
         private System.Windows.Forms.RadioButton rd_strasse;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox cb_boid;
+        private System.Windows.Forms.ComboBox cbsbid;
         private System.Windows.Forms.ListBox lstPK;
+        private System.Windows.Forms.BindingSource selectAllBezirkBindingSource;
+        private obsDataSetTableAdapters.selectAllBezirkTableAdapter selectAllBezirkTableAdapter;
     }
 }
 
