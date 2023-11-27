@@ -218,10 +218,66 @@ namespace OBS_Database
 
             con.Close();
 
-
-
             // TODO: Diese Codezeile lädt Daten in die Tabelle "obsDataSet.selectAllOrt". Sie können sie bei Bedarf verschieben oder entfernen.
             this.selectAllOrtTableAdapter.Fill(this.obsDataSet.selectAllOrt);
+        }
+        #endregion
+
+        #region Delete Bezirk
+        private void btnDeleteBezirk_Click(object sender, EventArgs e)
+        {
+            String strCon = "Data Source=(LocalDB)\\inf31;Initial Catalog = obs; Integrated Security = True";
+
+            SqlConnection con = new SqlConnection(strCon);
+            SqlCommand cmd = new SqlCommand("deleteFromBezirk", con);
+
+            cmd.CommandType = CommandType.StoredProcedure;
+
+
+            cmd.Parameters.Add("@inBID", SqlDbType.Int).Value = lstID.SelectedValue.ToString();
+
+
+            con.Open();
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            con.Close();
+
+            this.selectAllBezirkTableAdapter.Fill(this.obsDataSet.selectAllBezirk);
+        }
+        #endregion
+
+        #region Delete Strasse
+        private void btnDeleteStrasse_Click(object sender, EventArgs e)
+        {
+            String strCon = "Data Source=(LocalDB)\\inf31;Initial Catalog = obs; Integrated Security = True";
+
+            SqlConnection con = new SqlConnection(strCon);
+            SqlCommand cmd = new SqlCommand("deleteFromStrasse", con);
+
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.Add("@inSID", SqlDbType.Int).Value = lstID.SelectedValue.ToString();
+
+            con.Open();
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            con.Close();
+
+            this.selectAllStrasseTableAdapter1.Fill(this.obsDataSet.selectAllStrasse);
         }
         #endregion
 
@@ -257,20 +313,35 @@ namespace OBS_Database
                 btnDeleteBezirk.Visible = true;
                 btnDeleteStrasse.Visible = false;
 
-                lstPK.DataSource = obsDataSet.selectAllBezirk;
-                lstPK.DisplayMember = "BOID";
+                String strCon = "Data Source=(LocalDB)\\inf31;Initial Catalog = obs; Integrated Security = True";
+                SqlConnection con = new SqlConnection(strCon);
+                con.Open();
 
-                lstID.DataSource = obsDataSet.selectAllBezirk;
-                lstID.DisplayMember = "BID";
 
-                lstName.DataSource = obsDataSet.selectAllBezirk;
-                lstName.DisplayMember = "BName";
+                String sqlQuery = "SELECT bezirk.BOID, bezirk.BID, bezirk.BName, bezirk.BPLZ, bezirk.BEZahl, ort.OName FROM bezirk JOIN ort ON bezirk.BOID = ort.OID";
 
-                lstPLZ.DataSource = obsDataSet.selectAllBezirk;
-                lstPLZ.DisplayMember = "BPLZ";
+                using (SqlDataAdapter adapter = new SqlDataAdapter(sqlQuery, con))
+                {
+                    DataSet combinedDataSet = new DataSet();
+                    adapter.Fill(combinedDataSet, "CombinedData");
 
-                lstEZahl.DataSource = obsDataSet.selectAllBezirk;
-                lstEZahl.DisplayMember = "BEZahl";
+                    lstPK.DataSource = combinedDataSet.Tables["CombinedData"];
+                    lstPK.DisplayMember = "OName";
+
+                    lstID.DataSource = combinedDataSet.Tables["CombinedData"];
+                    lstID.DisplayMember = "BID";
+
+                    lstName.DataSource = combinedDataSet.Tables["CombinedData"];
+                    lstName.DisplayMember = "BName";
+
+                    lstPLZ.DataSource = combinedDataSet.Tables["CombinedData"];
+                    lstPLZ.DisplayMember = "BPLZ";
+
+                    lstEZahl.DataSource = combinedDataSet.Tables["CombinedData"];
+                    lstEZahl.DisplayMember = "BEZahl";
+                }
+
+                con.Close();
             }
             else if (rb_strasse.Checked)
             {
@@ -281,20 +352,35 @@ namespace OBS_Database
                 btnDeleteBezirk.Visible = false;
                 btnDeleteStrasse.Visible = true;
 
-                lstPK.DataSource = obsDataSet.selectAllStrasse;
-                lstPK.DisplayMember = "SBID";
+                String strCon = "Data Source=(LocalDB)\\inf31;Initial Catalog = obs; Integrated Security = True";
+                SqlConnection con = new SqlConnection(strCon);
+                con.Open();
 
-                lstID.DataSource = obsDataSet.selectAllStrasse;
-                lstID.DisplayMember = "SID";
 
-                lstName.DataSource = obsDataSet.selectAllStrasse;
-                lstName.DisplayMember = "SName";
+                string sqlQuery = "SELECT strasse.SBID, strasse.SID, strasse.SName, strasse.SPLZ, strasse.SEZahl, bezirk.BName FROM strasse JOIN bezirk ON strasse.SBID = bezirk.BID";
 
-                lstPLZ.DataSource = obsDataSet.selectAllStrasse;
-                lstPLZ.DisplayMember = "SPLZ";
+                using (SqlDataAdapter adapter = new SqlDataAdapter(sqlQuery, con))
+                {
+                    DataSet combinedDataSet = new DataSet();
+                    adapter.Fill(combinedDataSet, "CombinedStrassenData");
 
-                lstEZahl.DataSource = obsDataSet.selectAllStrasse;
-                lstEZahl.DisplayMember = "SEZahl";
+                    lstPK.DataSource = combinedDataSet.Tables["CombinedStrassenData"];
+                    lstPK.DisplayMember = "BName";
+
+                    lstID.DataSource = combinedDataSet.Tables["CombinedStrassenData"];
+                    lstID.DisplayMember = "SID";
+
+                    lstName.DataSource = combinedDataSet.Tables["CombinedStrassenData"];
+                    lstName.DisplayMember = "SName";
+
+                    lstPLZ.DataSource = combinedDataSet.Tables["CombinedStrassenData"];
+                    lstPLZ.DisplayMember = "SPLZ";
+
+                    lstEZahl.DataSource = combinedDataSet.Tables["CombinedStrassenData"];
+                    lstEZahl.DisplayMember = "SEZahl";
+                }
+
+                con.Close();
             }
         }
         #endregion
@@ -354,5 +440,6 @@ namespace OBS_Database
             return bid;
         }
         #endregion
+
     }
 }

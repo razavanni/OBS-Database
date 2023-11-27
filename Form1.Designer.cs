@@ -78,12 +78,14 @@
             this.selectAllBezirkBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.selectAllBezirkTableAdapter = new OBS_Database.obsDataSetTableAdapters.selectAllBezirkTableAdapter();
             this.selectAllStrasseTableAdapter1 = new OBS_Database.obsDataSetTableAdapters.selectAllStrasseTableAdapter();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.selectAllOrtBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.obsDataSet)).BeginInit();
             this.gp_ort.SuspendLayout();
             this.gp_bezirk.SuspendLayout();
             this.gp_strasse.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.selectAllBezirkBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // lstID
@@ -503,6 +505,7 @@
             this.btnDeleteStrasse.TabIndex = 17;
             this.btnDeleteStrasse.Text = "Strasse löschen";
             this.btnDeleteStrasse.UseVisualStyleBackColor = true;
+            this.btnDeleteStrasse.Click += new System.EventHandler(this.btnDeleteStrasse_Click);
             // 
             // btnDeleteBezirk
             // 
@@ -513,6 +516,7 @@
             this.btnDeleteBezirk.TabIndex = 18;
             this.btnDeleteBezirk.Text = "Bezirk löschen";
             this.btnDeleteBezirk.UseVisualStyleBackColor = true;
+            this.btnDeleteBezirk.Click += new System.EventHandler(this.btnDeleteBezirk_Click);
             // 
             // rb_ort
             // 
@@ -610,6 +614,7 @@
             this.gp_strasse.ResumeLayout(false);
             this.gp_strasse.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.selectAllBezirkBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -666,6 +671,7 @@
         private System.Windows.Forms.BindingSource selectAllBezirkBindingSource;
         private obsDataSetTableAdapters.selectAllBezirkTableAdapter selectAllBezirkTableAdapter;
         private obsDataSetTableAdapters.selectAllStrasseTableAdapter selectAllStrasseTableAdapter1;
+        private System.Windows.Forms.BindingSource bindingSource1;
     }
 }
 
