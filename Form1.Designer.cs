@@ -72,6 +72,9 @@
             this.rb_ort = new System.Windows.Forms.RadioButton();
             this.rd_bezirk = new System.Windows.Forms.RadioButton();
             this.rd_strasse = new System.Windows.Forms.RadioButton();
+            this.lstPK = new System.Windows.Forms.ListBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.selectAllOrtBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.obsDataSet)).BeginInit();
             this.gp_ort.SuspendLayout();
@@ -84,7 +87,7 @@
             this.lstID.DataSource = this.selectAllOrtBindingSource;
             this.lstID.DisplayMember = "OID";
             this.lstID.FormattingEnabled = true;
-            this.lstID.Location = new System.Drawing.Point(34, 234);
+            this.lstID.Location = new System.Drawing.Point(32, 234);
             this.lstID.Name = "lstID";
             this.lstID.Size = new System.Drawing.Size(80, 277);
             this.lstID.TabIndex = 0;
@@ -113,28 +116,28 @@
             // 
             // txtOName
             // 
-            this.txtOName.Location = new System.Drawing.Point(104, 32);
+            this.txtOName.Location = new System.Drawing.Point(210, 32);
             this.txtOName.Name = "txtOName";
             this.txtOName.Size = new System.Drawing.Size(136, 20);
             this.txtOName.TabIndex = 2;
             // 
             // txtOPLZ
             // 
-            this.txtOPLZ.Location = new System.Drawing.Point(254, 32);
+            this.txtOPLZ.Location = new System.Drawing.Point(360, 32);
             this.txtOPLZ.Name = "txtOPLZ";
             this.txtOPLZ.Size = new System.Drawing.Size(136, 20);
             this.txtOPLZ.TabIndex = 3;
             // 
             // txtOEZahl
             // 
-            this.txtOEZahl.Location = new System.Drawing.Point(415, 32);
+            this.txtOEZahl.Location = new System.Drawing.Point(521, 32);
             this.txtOEZahl.Name = "txtOEZahl";
             this.txtOEZahl.Size = new System.Drawing.Size(136, 20);
             this.txtOEZahl.TabIndex = 4;
             // 
             // btnInsertOrt
             // 
-            this.btnInsertOrt.Location = new System.Drawing.Point(570, 32);
+            this.btnInsertOrt.Location = new System.Drawing.Point(676, 32);
             this.btnInsertOrt.Name = "btnInsertOrt";
             this.btnInsertOrt.Size = new System.Drawing.Size(103, 20);
             this.btnInsertOrt.TabIndex = 5;
@@ -154,7 +157,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(102, 14);
+            this.label2.Location = new System.Drawing.Point(208, 14);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(52, 13);
             this.label2.TabIndex = 7;
@@ -163,7 +166,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(251, 16);
+            this.label3.Location = new System.Drawing.Point(357, 16);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(44, 13);
             this.label3.TabIndex = 8;
@@ -172,7 +175,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(412, 14);
+            this.label4.Location = new System.Drawing.Point(518, 14);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(93, 13);
             this.label4.TabIndex = 9;
@@ -191,7 +194,7 @@
             this.gp_ort.Controls.Add(this.txtOEZahl);
             this.gp_ort.Location = new System.Drawing.Point(23, 32);
             this.gp_ort.Name = "gp_ort";
-            this.gp_ort.Size = new System.Drawing.Size(684, 59);
+            this.gp_ort.Size = new System.Drawing.Size(793, 59);
             this.gp_ort.TabIndex = 10;
             this.gp_ort.TabStop = false;
             this.gp_ort.Text = "Ort";
@@ -201,7 +204,7 @@
             this.lstName.DataSource = this.selectAllOrtBindingSource;
             this.lstName.DisplayMember = "OName";
             this.lstName.FormattingEnabled = true;
-            this.lstName.Location = new System.Drawing.Point(130, 234);
+            this.lstName.Location = new System.Drawing.Point(234, 234);
             this.lstName.Name = "lstName";
             this.lstName.Size = new System.Drawing.Size(135, 277);
             this.lstName.TabIndex = 11;
@@ -212,7 +215,7 @@
             this.lstPLZ.DataSource = this.selectAllOrtBindingSource;
             this.lstPLZ.DisplayMember = "OPLZ";
             this.lstPLZ.FormattingEnabled = true;
-            this.lstPLZ.Location = new System.Drawing.Point(279, 234);
+            this.lstPLZ.Location = new System.Drawing.Point(384, 234);
             this.lstPLZ.Name = "lstPLZ";
             this.lstPLZ.Size = new System.Drawing.Size(136, 277);
             this.lstPLZ.TabIndex = 12;
@@ -223,7 +226,7 @@
             this.lstEZahl.DataSource = this.selectAllOrtBindingSource;
             this.lstEZahl.DisplayMember = "OEZahl";
             this.lstEZahl.FormattingEnabled = true;
-            this.lstEZahl.Location = new System.Drawing.Point(440, 234);
+            this.lstEZahl.Location = new System.Drawing.Point(545, 234);
             this.lstEZahl.Name = "lstEZahl";
             this.lstEZahl.Size = new System.Drawing.Size(136, 277);
             this.lstEZahl.TabIndex = 13;
@@ -231,7 +234,7 @@
             // 
             // btn_delete_ort
             // 
-            this.btn_delete_ort.Location = new System.Drawing.Point(593, 275);
+            this.btn_delete_ort.Location = new System.Drawing.Point(700, 291);
             this.btn_delete_ort.Name = "btn_delete_ort";
             this.btn_delete_ort.Size = new System.Drawing.Size(103, 24);
             this.btn_delete_ort.TabIndex = 14;
@@ -241,6 +244,7 @@
             // 
             // gp_bezirk
             // 
+            this.gp_bezirk.Controls.Add(this.comboBox1);
             this.gp_bezirk.Controls.Add(this.txtBID);
             this.gp_bezirk.Controls.Add(this.btnInsertBezirk);
             this.gp_bezirk.Controls.Add(this.label5);
@@ -252,7 +256,7 @@
             this.gp_bezirk.Controls.Add(this.txtBEZahl);
             this.gp_bezirk.Location = new System.Drawing.Point(23, 97);
             this.gp_bezirk.Name = "gp_bezirk";
-            this.gp_bezirk.Size = new System.Drawing.Size(684, 59);
+            this.gp_bezirk.Size = new System.Drawing.Size(793, 59);
             this.gp_bezirk.TabIndex = 15;
             this.gp_bezirk.TabStop = false;
             this.gp_bezirk.Text = "Bezirk";
@@ -266,12 +270,13 @@
             // 
             // btnInsertBezirk
             // 
-            this.btnInsertBezirk.Location = new System.Drawing.Point(570, 32);
+            this.btnInsertBezirk.Location = new System.Drawing.Point(676, 32);
             this.btnInsertBezirk.Name = "btnInsertBezirk";
             this.btnInsertBezirk.Size = new System.Drawing.Size(103, 20);
             this.btnInsertBezirk.TabIndex = 5;
             this.btnInsertBezirk.Text = "Insert Bezirk";
             this.btnInsertBezirk.UseVisualStyleBackColor = true;
+            this.btnInsertBezirk.Click += new System.EventHandler(this.btnInsertBezirk_Click);
             // 
             // label5
             // 
@@ -285,7 +290,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(102, 14);
+            this.label6.Location = new System.Drawing.Point(208, 14);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(67, 13);
             this.label6.TabIndex = 7;
@@ -294,7 +299,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(251, 16);
+            this.label7.Location = new System.Drawing.Point(357, 16);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(64, 13);
             this.label7.TabIndex = 8;
@@ -303,7 +308,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(412, 14);
+            this.label8.Location = new System.Drawing.Point(518, 14);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(108, 13);
             this.label8.TabIndex = 9;
@@ -311,27 +316,28 @@
             // 
             // txtBName
             // 
-            this.txtBName.Location = new System.Drawing.Point(104, 32);
+            this.txtBName.Location = new System.Drawing.Point(210, 32);
             this.txtBName.Name = "txtBName";
             this.txtBName.Size = new System.Drawing.Size(136, 20);
             this.txtBName.TabIndex = 2;
             // 
             // txtBPLZ
             // 
-            this.txtBPLZ.Location = new System.Drawing.Point(254, 32);
+            this.txtBPLZ.Location = new System.Drawing.Point(360, 32);
             this.txtBPLZ.Name = "txtBPLZ";
             this.txtBPLZ.Size = new System.Drawing.Size(136, 20);
             this.txtBPLZ.TabIndex = 3;
             // 
             // txtBEZahl
             // 
-            this.txtBEZahl.Location = new System.Drawing.Point(415, 32);
+            this.txtBEZahl.Location = new System.Drawing.Point(521, 32);
             this.txtBEZahl.Name = "txtBEZahl";
             this.txtBEZahl.Size = new System.Drawing.Size(136, 20);
             this.txtBEZahl.TabIndex = 4;
             // 
             // gp_strasse
             // 
+            this.gp_strasse.Controls.Add(this.comboBox2);
             this.gp_strasse.Controls.Add(this.txtSID);
             this.gp_strasse.Controls.Add(this.btnInsertStrasse);
             this.gp_strasse.Controls.Add(this.label9);
@@ -343,7 +349,7 @@
             this.gp_strasse.Controls.Add(this.txtSEZahl);
             this.gp_strasse.Location = new System.Drawing.Point(23, 162);
             this.gp_strasse.Name = "gp_strasse";
-            this.gp_strasse.Size = new System.Drawing.Size(684, 59);
+            this.gp_strasse.Size = new System.Drawing.Size(793, 59);
             this.gp_strasse.TabIndex = 16;
             this.gp_strasse.TabStop = false;
             this.gp_strasse.Text = "Strasse";
@@ -357,7 +363,7 @@
             // 
             // btnInsertStrasse
             // 
-            this.btnInsertStrasse.Location = new System.Drawing.Point(570, 31);
+            this.btnInsertStrasse.Location = new System.Drawing.Point(675, 32);
             this.btnInsertStrasse.Name = "btnInsertStrasse";
             this.btnInsertStrasse.Size = new System.Drawing.Size(103, 20);
             this.btnInsertStrasse.TabIndex = 5;
@@ -376,7 +382,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(102, 14);
+            this.label10.Location = new System.Drawing.Point(207, 15);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(73, 13);
             this.label10.TabIndex = 7;
@@ -385,7 +391,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(251, 16);
+            this.label11.Location = new System.Drawing.Point(356, 17);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(65, 13);
             this.label11.TabIndex = 8;
@@ -394,7 +400,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(412, 14);
+            this.label12.Location = new System.Drawing.Point(517, 15);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(114, 13);
             this.label12.TabIndex = 9;
@@ -402,28 +408,28 @@
             // 
             // txtSName
             // 
-            this.txtSName.Location = new System.Drawing.Point(104, 32);
+            this.txtSName.Location = new System.Drawing.Point(209, 33);
             this.txtSName.Name = "txtSName";
             this.txtSName.Size = new System.Drawing.Size(136, 20);
             this.txtSName.TabIndex = 2;
             // 
             // txtSPLZ
             // 
-            this.txtSPLZ.Location = new System.Drawing.Point(254, 32);
+            this.txtSPLZ.Location = new System.Drawing.Point(359, 33);
             this.txtSPLZ.Name = "txtSPLZ";
             this.txtSPLZ.Size = new System.Drawing.Size(136, 20);
             this.txtSPLZ.TabIndex = 3;
             // 
             // txtSEZahl
             // 
-            this.txtSEZahl.Location = new System.Drawing.Point(415, 32);
+            this.txtSEZahl.Location = new System.Drawing.Point(520, 33);
             this.txtSEZahl.Name = "txtSEZahl";
             this.txtSEZahl.Size = new System.Drawing.Size(136, 20);
             this.txtSEZahl.TabIndex = 4;
             // 
             // btnDeleteStrasse
             // 
-            this.btnDeleteStrasse.Location = new System.Drawing.Point(593, 335);
+            this.btnDeleteStrasse.Location = new System.Drawing.Point(700, 351);
             this.btnDeleteStrasse.Name = "btnDeleteStrasse";
             this.btnDeleteStrasse.Size = new System.Drawing.Size(103, 24);
             this.btnDeleteStrasse.TabIndex = 17;
@@ -432,7 +438,7 @@
             // 
             // btnDeleteBezirk
             // 
-            this.btnDeleteBezirk.Location = new System.Drawing.Point(593, 305);
+            this.btnDeleteBezirk.Location = new System.Drawing.Point(700, 321);
             this.btnDeleteBezirk.Name = "btnDeleteBezirk";
             this.btnDeleteBezirk.Size = new System.Drawing.Size(103, 24);
             this.btnDeleteBezirk.TabIndex = 18;
@@ -443,7 +449,7 @@
             // 
             this.rb_ort.AutoSize = true;
             this.rb_ort.Checked = true;
-            this.rb_ort.Location = new System.Drawing.Point(602, 388);
+            this.rb_ort.Location = new System.Drawing.Point(709, 404);
             this.rb_ort.Name = "rb_ort";
             this.rb_ort.Size = new System.Drawing.Size(80, 17);
             this.rb_ort.TabIndex = 19;
@@ -454,7 +460,7 @@
             // rd_bezirk
             // 
             this.rd_bezirk.AutoSize = true;
-            this.rd_bezirk.Location = new System.Drawing.Point(602, 411);
+            this.rd_bezirk.Location = new System.Drawing.Point(709, 427);
             this.rd_bezirk.Name = "rd_bezirk";
             this.rd_bezirk.Size = new System.Drawing.Size(95, 17);
             this.rd_bezirk.TabIndex = 20;
@@ -464,18 +470,43 @@
             // rd_strasse
             // 
             this.rd_strasse.AutoSize = true;
-            this.rd_strasse.Location = new System.Drawing.Point(602, 434);
+            this.rd_strasse.Location = new System.Drawing.Point(709, 450);
             this.rd_strasse.Name = "rd_strasse";
             this.rd_strasse.Size = new System.Drawing.Size(101, 17);
             this.rd_strasse.TabIndex = 21;
             this.rd_strasse.Text = "Anzeige Strasse";
             this.rd_strasse.UseVisualStyleBackColor = true;
             // 
+            // lstPK
+            // 
+            this.lstPK.FormattingEnabled = true;
+            this.lstPK.Location = new System.Drawing.Point(116, 234);
+            this.lstPK.Name = "lstPK";
+            this.lstPK.Size = new System.Drawing.Size(112, 277);
+            this.lstPK.TabIndex = 22;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(93, 32);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(112, 21);
+            this.comboBox1.TabIndex = 10;
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(93, 33);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(112, 21);
+            this.comboBox2.TabIndex = 11;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(733, 547);
+            this.ClientSize = new System.Drawing.Size(828, 547);
+            this.Controls.Add(this.lstPK);
             this.Controls.Add(this.rd_strasse);
             this.Controls.Add(this.rd_bezirk);
             this.Controls.Add(this.rb_ort);
@@ -550,6 +581,9 @@
         private System.Windows.Forms.RadioButton rb_ort;
         private System.Windows.Forms.RadioButton rd_bezirk;
         private System.Windows.Forms.RadioButton rd_strasse;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ListBox lstPK;
     }
 }
 

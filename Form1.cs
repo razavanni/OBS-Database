@@ -86,5 +86,37 @@ namespace OBS_Database
             // TODO: Diese Codezeile lädt Daten in die Tabelle "obsDataSet.selectAllOrt". Sie können sie bei Bedarf verschieben oder entfernen.
             this.selectAllOrtTableAdapter.Fill(this.obsDataSet.selectAllOrt);
         }
+
+        private void btnInsertBezirk_Click(object sender, EventArgs e)
+        {
+            String strCon = "Data Source=(LocalDB)\\inf31;Initial Catalog = obs; Integrated Security = True";
+
+            SqlConnection con = new SqlConnection(strCon);
+            SqlCommand cmd = new SqlCommand("insertBezirk", con);
+
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.Add("@inBID", SqlDbType.Int).Value = Int32.Parse(txtBID.Text);
+            cmd.Parameters.Add("@inBName", SqlDbType.VarChar).Value = txtBName.Text;
+            cmd.Parameters.Add("@inBPLZ", SqlDbType.VarChar).Value = txtBPLZ.Text;
+            cmd.Parameters.Add("@inBEZAHL", SqlDbType.Int).Value = Int32.Parse(txtBEZahl.Text);
+
+
+            con.Open();
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            con.Close();
+
+            // TODO: Diese Codezeile lädt Daten in die Tabelle "obsDataSet.selectAllOrt". Sie können sie bei Bedarf verschieben oder entfernen.
+            this.selectAllOrtTableAdapter.Fill(this.obsDataSet.selectAllOrt);
+
+        }
     }
 }
