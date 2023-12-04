@@ -73,6 +73,12 @@ namespace OBS_Database
             // TODO: Diese Codezeile lädt Daten in die Tabelle "obsDataSet.selectAllOrt". Sie können sie bei Bedarf verschieben oder entfernen.
             this.selectAllOrtTableAdapter.Fill(this.obsDataSet.selectAllOrt);
 
+
+            txtOEZahl.Text = null;
+            txtOName.Text = null;
+            txtOPLZ.Text = null;
+            txtOID.Text = null;
+            txtOID.Focus();
         }
         #endregion
 
@@ -87,7 +93,7 @@ namespace OBS_Database
 
             cmd.CommandType = CommandType.StoredProcedure;
 
-            
+
             string oname = cb_bezirk_fk.Text;
             int oid = get_OID_from_OName(oname);
 
@@ -115,8 +121,8 @@ namespace OBS_Database
                 txtBEZahl.Text = null;
                 txtBEZahl.Focus();
             }
-            
-            
+
+
             con.Open();
             try
             {
@@ -126,11 +132,17 @@ namespace OBS_Database
             {
                 MessageBox.Show(ex.Message);
             }
-            
+
             con.Close();
-            
+
             // TODO: Diese Codezeile lädt Daten in die Tabelle "obsDataSet.selectAllOrt". Sie können sie bei Bedarf verschieben oder entfernen.
             this.selectAllBezirkTableAdapter.Fill(this.obsDataSet.selectAllBezirk);
+
+            txtBID.Text = null;
+            txtBEZahl.Text = null;
+            txtBName.Text = null;
+            txtBPLZ.Text = null;
+            txtBID.Focus();
 
         }
         #endregion
@@ -190,6 +202,13 @@ namespace OBS_Database
 
             // TODO: Diese Codezeile lädt Daten in die Tabelle "obsDataSet.selectAllOrt". Sie können sie bei Bedarf verschieben oder entfernen.
             this.selectAllStrasseTableAdapter1.Fill(this.obsDataSet.selectAllStrasse);
+
+            txtSID.Text = null;
+            txtSEZahl.Text = null;
+            txtSName.Text = null;
+            txtSPLZ.Text = null;
+            txtSID.Focus();
+
         }
         #endregion
 
