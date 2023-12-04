@@ -57,21 +57,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>obsDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="obsDataSet1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>obsDataSet1.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="obsDataSet2.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>obsDataSet2.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="obsDataSet3.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>obsDataSet3.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -96,39 +81,6 @@
     </None>
     <None Include="obsDataSet.xss">
       <DependentUpon>obsDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="obsDataSet1.xsc">
-      <DependentUpon>obsDataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="obsDataSet1.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>obsDataSet1.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="obsDataSet1.xss">
-      <DependentUpon>obsDataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="obsDataSet2.xsc">
-      <DependentUpon>obsDataSet2.xsd</DependentUpon>
-    </None>
-    <None Include="obsDataSet2.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>obsDataSet2.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="obsDataSet2.xss">
-      <DependentUpon>obsDataSet2.xsd</DependentUpon>
-    </None>
-    <None Include="obsDataSet3.xsc">
-      <DependentUpon>obsDataSet3.xsd</DependentUpon>
-    </None>
-    <None Include="obsDataSet3.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>obsDataSet3.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="obsDataSet3.xss">
-      <DependentUpon>obsDataSet3.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

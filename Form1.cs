@@ -253,7 +253,7 @@ namespace OBS_Database
             cmd.CommandType = CommandType.StoredProcedure;
 
 
-            cmd.Parameters.Add("@inBID", SqlDbType.Int).Value = lstID.SelectedValue.ToString();
+            cmd.Parameters.Add("@inBID", SqlDbType.Int).Value = Convert.ToInt32(lstID.SelectedValue);
 
 
             con.Open();
@@ -282,7 +282,9 @@ namespace OBS_Database
 
             cmd.CommandType = CommandType.StoredProcedure;
 
-            cmd.Parameters.Add("@inSID", SqlDbType.Int).Value = lstID.SelectedValue.ToString();
+            object foo = lstID.SelectedValue;
+
+            cmd.Parameters.Add("@inSID", SqlDbType.Int).Value = (int)lstID.SelectedValue;
 
             con.Open();
             try
