@@ -1,15 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml.Linq;
 
 namespace OBS_Database
 {
@@ -23,10 +15,9 @@ namespace OBS_Database
         #region Form load
         private void Form1_Load(object sender, EventArgs e)
         {
-            // TODO: Diese Codezeile lädt Daten in die Tabelle "obsDataSet.selectAllBezirk". Sie können sie bei Bedarf verschieben oder entfernen.
-            this.selectAllBezirkTableAdapter.Fill(this.obsDataSet.selectAllBezirk);
-            // TODO: Diese Codezeile lädt Daten in die Tabelle "obsDataSet.selectAllOrt". Sie können sie bei Bedarf verschieben oder entfernen.
-            this.selectAllOrtTableAdapter.Fill(this.obsDataSet.selectAllOrt);
+            ReloadListBoxOrt();
+            ReloadListBoxBezirk();
+            ReloadListBoxStrasse();
 
             btn_delete_ort.Visible = true;
             btnDeleteBezirk.Visible = false;
@@ -34,9 +25,11 @@ namespace OBS_Database
 
             cb_bezirk_fk.DataSource = obsDataSet.selectAllOrt;
             cb_bezirk_fk.DisplayMember = "OName";
+            cb_bezirk_fk.ValueMember = "OName";
 
             cb_strasse_fk.DataSource = obsDataSet.selectAllBezirk;
             cb_strasse_fk.DisplayMember = "BName";
+            cb_strasse_fk.ValueMember = "BName";
 
             lstPK.Visible = false;
         }
@@ -70,8 +63,7 @@ namespace OBS_Database
 
             con.Close();
 
-            // TODO: Diese Codezeile lädt Daten in die Tabelle "obsDataSet.selectAllOrt". Sie können sie bei Bedarf verschieben oder entfernen.
-            this.selectAllOrtTableAdapter.Fill(this.obsDataSet.selectAllOrt);
+            ReloadListBoxOrt();
 
 
             txtOEZahl.Text = null;
@@ -135,8 +127,7 @@ namespace OBS_Database
 
             con.Close();
 
-            // TODO: Diese Codezeile lädt Daten in die Tabelle "obsDataSet.selectAllOrt". Sie können sie bei Bedarf verschieben oder entfernen.
-            this.selectAllBezirkTableAdapter.Fill(this.obsDataSet.selectAllBezirk);
+            ReloadListBoxBezirk();
 
             txtBID.Text = null;
             txtBEZahl.Text = null;
@@ -200,8 +191,7 @@ namespace OBS_Database
 
             con.Close();
 
-            // TODO: Diese Codezeile lädt Daten in die Tabelle "obsDataSet.selectAllOrt". Sie können sie bei Bedarf verschieben oder entfernen.
-            this.selectAllStrasseTableAdapter1.Fill(this.obsDataSet.selectAllStrasse);
+            ReloadListBoxStrasse();
 
             txtSID.Text = null;
             txtSEZahl.Text = null;
@@ -222,7 +212,7 @@ namespace OBS_Database
 
             cmd.CommandType = CommandType.StoredProcedure;
 
-            cmd.Parameters.Add("@inOID", SqlDbType.Int).Value = lstID.SelectedValue.ToString();
+            cmd.Parameters.Add("@inOID", SqlDbType.Int).Value = (Int32)lstID.SelectedValue;
 
 
             con.Open();
@@ -237,8 +227,7 @@ namespace OBS_Database
 
             con.Close();
 
-            // TODO: Diese Codezeile lädt Daten in die Tabelle "obsDataSet.selectAllOrt". Sie können sie bei Bedarf verschieben oder entfernen.
-            this.selectAllOrtTableAdapter.Fill(this.obsDataSet.selectAllOrt);
+            ReloadListBoxOrt();
         }
         #endregion
 
@@ -253,7 +242,7 @@ namespace OBS_Database
             cmd.CommandType = CommandType.StoredProcedure;
 
 
-            cmd.Parameters.Add("@inBID", SqlDbType.Int).Value = Convert.ToInt32(lstID.SelectedValue);
+            cmd.Parameters.Add("@inBID", SqlDbType.Int).Value = (Int32)(lstID.SelectedValue);
 
 
             con.Open();
@@ -268,7 +257,8 @@ namespace OBS_Database
 
             con.Close();
 
-            this.selectAllBezirkTableAdapter.Fill(this.obsDataSet.selectAllBezirk);
+            ReloadListBoxBezirk();
+
         }
         #endregion
 
@@ -282,9 +272,7 @@ namespace OBS_Database
 
             cmd.CommandType = CommandType.StoredProcedure;
 
-            object foo = lstID.SelectedValue;
-
-            cmd.Parameters.Add("@inSID", SqlDbType.Int).Value = (int)lstID.SelectedValue;
+            cmd.Parameters.Add("@inSID", SqlDbType.Int).Value = (Int32)lstID.SelectedValue;
 
             con.Open();
             try
@@ -298,7 +286,7 @@ namespace OBS_Database
 
             con.Close();
 
-            this.selectAllStrasseTableAdapter1.Fill(this.obsDataSet.selectAllStrasse);
+            ReloadListBoxStrasse();
         }
         #endregion
 
@@ -314,15 +302,19 @@ namespace OBS_Database
 
                 lstID.DataSource = obsDataSet.selectAllOrt;
                 lstID.DisplayMember = "OID";
+                lstID.ValueMember = "OID";
 
                 lstName.DataSource = obsDataSet.selectAllOrt;
                 lstName.DisplayMember = "OName";
+                lstName.ValueMember = "OName";
 
                 lstPLZ.DataSource = obsDataSet.selectAllOrt;
                 lstPLZ.DisplayMember = "OPLZ";
+                lstPLZ.ValueMember = "OPLZ";
 
                 lstEZahl.DataSource = obsDataSet.selectAllOrt;
                 lstEZahl.DisplayMember = "OEZahl";
+                lstEZahl.ValueMember = "OEZahl";
             }
             else if (rb_bezirk.Checked)
             {
@@ -346,18 +338,23 @@ namespace OBS_Database
 
                     lstPK.DataSource = combinedDataSet.Tables["CombinedData"];
                     lstPK.DisplayMember = "OName";
+                    lstPK.ValueMember = "OName";
 
                     lstID.DataSource = combinedDataSet.Tables["CombinedData"];
                     lstID.DisplayMember = "BID";
+                    lstID.ValueMember = "BID";
 
                     lstName.DataSource = combinedDataSet.Tables["CombinedData"];
                     lstName.DisplayMember = "BName";
+                    lstName.ValueMember = "BName";
 
                     lstPLZ.DataSource = combinedDataSet.Tables["CombinedData"];
                     lstPLZ.DisplayMember = "BPLZ";
+                    lstPLZ.ValueMember = "BPLZ";
 
                     lstEZahl.DataSource = combinedDataSet.Tables["CombinedData"];
                     lstEZahl.DisplayMember = "BEZahl";
+                    lstEZahl.ValueMember = "BEZahl";
                 }
 
                 con.Close();
@@ -384,18 +381,23 @@ namespace OBS_Database
 
                     lstPK.DataSource = combinedDataSet.Tables["CombinedStrassenData"];
                     lstPK.DisplayMember = "BName";
+                    lstPK.ValueMember = "BName";
 
                     lstID.DataSource = combinedDataSet.Tables["CombinedStrassenData"];
                     lstID.DisplayMember = "SID";
+                    lstID.ValueMember = "SID";
 
                     lstName.DataSource = combinedDataSet.Tables["CombinedStrassenData"];
                     lstName.DisplayMember = "SName";
+                    lstName.ValueMember = "SName";
 
                     lstPLZ.DataSource = combinedDataSet.Tables["CombinedStrassenData"];
                     lstPLZ.DisplayMember = "SPLZ";
+                    lstPLZ.ValueMember = "SPLZ";
 
                     lstEZahl.DataSource = combinedDataSet.Tables["CombinedStrassenData"];
                     lstEZahl.DisplayMember = "SEZahl";
+                    lstEZahl.ValueMember = "SEZahl";
                 }
 
                 con.Close();
@@ -459,5 +461,23 @@ namespace OBS_Database
         }
         #endregion
 
+        #region Reload List Boxen
+        private void ReloadListBoxOrt()
+        {
+            this.selectAllOrtTableAdapter.Fill(this.obsDataSet.selectAllOrt);
+        }
+        
+        private void ReloadListBoxBezirk()
+        {
+            this.selectAllBezirkTableAdapter.Fill(this.obsDataSet.selectAllBezirk);
+
+        }
+
+        private void ReloadListBoxStrasse()
+        {
+            this.selectAllStrasseTableAdapter1.Fill(this.obsDataSet.selectAllStrasse);
+
+        }
+        #endregion
     }
 }
