@@ -307,7 +307,6 @@ namespace OBS_Database
         {
             if (rb_ort.Checked)
             {
-                Console.WriteLine("ort checked");
                 lstPK.Visible = false;
                 btn_delete_ort.Visible = true;
                 btnDeleteBezirk.Visible = false;
@@ -327,7 +326,6 @@ namespace OBS_Database
             }
             else if (rb_bezirk.Checked)
             {
-                Console.WriteLine("bezirk checked");
 
                 lstPK.Visible = true;
                 btn_delete_ort.Visible = false;
@@ -366,7 +364,6 @@ namespace OBS_Database
             }
             else if (rb_strasse.Checked)
             {
-                Console.WriteLine("strasse checked");
 
                 lstPK.Visible = true;
                 btn_delete_ort.Visible = false;
